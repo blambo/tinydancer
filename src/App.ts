@@ -3,6 +3,8 @@ import * as express from 'express';
 import * as logger from 'morgan';
 import * as bodyParser from 'body-parser';
 
+import danceLevelRouter from './DanceLevelHandler';
+
 // Our tinydancer web server
 class App {
 
@@ -21,15 +23,7 @@ class App {
   }
 
   private routes(): void {
-    let router = express.Router();
-
-    router.get('/', (req, res, next) => {
-      res.json({
-        message: 'Tiny Dancer Server'
-      });
-    });
-
-    this.express.use('/', router);
+    this.express.use('/', danceLevelRouter);
   }
 }
 
